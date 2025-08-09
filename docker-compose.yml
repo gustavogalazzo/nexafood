@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14
+    container_name: nexafood-db      # <-- GARANTA QUE O NOME DO CONTÊINER É ESTE
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=nexafood         # <-- GARANTA QUE O NOME DO BANCO DE DADOS É ESTE
+    volumes:
+      - nexafood_pgdata:/var/lib/postgresql/data
+
+volumes:
+  nexafood_pgdata:
